@@ -1,0 +1,673 @@
+Total Conferences: 4540
+With Coordinates: 661
+With City: 4539
+
+Conferences with coordinates:
+ - Devoxx UK (London, UK): 51.5074456, -0.1277653
+ - Cluster Europe (Paris, France): 48.8588897, 2.320041
+ - React Europe (Paris, France): 48.8588897, 2.320041
+ - Codemotion Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - GitHub Satellite (London, UK): 51.5074456, -0.1277653
+ - FinDEVr London (London, UK): 51.5074456, -0.1277653
+ - GOTO Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Microsoft #experiences17 (Paris, France): 48.8588897, 2.320041
+ - ParisWeb (Paris, France): 48.8588897, 2.320041
+ - Codemotion Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Google Cloud Summit | Paris (Paris, France): 48.8588897, 2.320041
+ - dotGo (Paris, France): 48.8588897, 2.320041
+ - Agile Tour Paris (Paris, France): 48.8588897, 2.320041
+ - dotCSS (Paris, France): 48.8588897, 2.320041
+ - dotJS (Paris, France): 48.8588897, 2.320041
+ - Azure Red Shirt Dev Tour (Paris, France): 48.8588897, 2.320041
+ - dotSwift (Paris, France): 48.8588897, 2.320041
+ - ng-europe (Paris, France): 48.8588897, 2.320041
+ - Cluster Europe (Paris, France): 48.8588897, 2.320041
+ - Serverlessconf Paris (Paris, France): 48.8588897, 2.320041
+ - Big Data Paris (Paris, France): 48.8588897, 2.320041
+ - pg Day Paris (Paris, France): 48.8588897, 2.320041
+ - SymfonyLive Paris 2018 (Paris, France): 48.8588897, 2.320041
+ - API Conference (London, UK): 51.5074456, -0.1277653
+ - Devoxx France (Paris, France): 48.8588897, 2.320041
+ - Android Makers France (Paris, France): 48.8588897, 2.320041
+ - Devoxx UK (London, UK): 51.5074456, -0.1277653
+ - Innorobo (Paris, France): 48.8588897, 2.320041
+ - DataXDay (Paris, France): 48.8588897, 2.320041
+ - Newcrafts (Paris, France): 48.8588897, 2.320041
+ - React Europe (Paris, France): 48.8588897, 2.320041
+ - dotAI (Paris, France): 48.8588897, 2.320041
+ - dotScale (Paris, France): 48.8588897, 2.320041
+ - Best Of Web (Paris, France): 48.8588897, 2.320041
+ - AIParis (Paris, France): 48.8588897, 2.320041
+ - AWS Summit Paris (Paris, France): 48.8588897, 2.320041
+ - JHipster Conf (Paris, France): 48.8588897, 2.320041
+ - USI (Paris, France): 48.8588897, 2.320041
+ - Paris Container Day (Paris, France): 48.8588897, 2.320041
+ - Jenkins User Conference (Paris, France): 48.8588897, 2.320041
+ - La nuit du Hack (Paris, France): 48.8588897, 2.320041
+ - Oracle Code (Paris, France): 48.8588897, 2.320041
+ - GopherCon UK (London, UK): 51.5074456, -0.1277653
+ - Container Camp UK (London, UK): 51.5074456, -0.1277653
+ - AWS Dev Day 2018 (Paris, France): 48.8588897, 2.320041
+ - FrenchKit (Paris, France): 48.8588897, 2.320041
+ - KotlinConf 2018 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - DevOps REX (Paris, France): 48.8588897, 2.320041
+ - Forum PHP 2018 (Paris, France): 48.8588897, 2.320041
+ - VoxxedDays Microservices (Paris, France): 48.8588897, 2.320041
+ - µCon London 2018 (London, UK): 51.5074456, -0.1277653
+ - Microsoft Experiences 18 (Paris, France): 48.8588897, 2.320041
+ - dotCSS (Paris, France): 48.8588897, 2.320041
+ - MongoDB Europe'18 (London, UK): 51.5074456, -0.1277653
+ - dotJS (Paris, France): 48.8588897, 2.320041
+ - MobileOne (Paris, France): 48.8588897, 2.320041
+ - XebiCon (Paris, France): 48.8588897, 2.320041
+ - Maker Faire Paris (Paris, France): 48.8588897, 2.320041
+ - Paris Open Source Summit (Paris, France): 48.8588897, 2.320041
+ - dotSwift (Paris, France): 48.8588897, 2.320041
+ - DevFest Paris (Paris, France): 48.8588897, 2.320041
+ - Frontend Love (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - VueJs Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - dotGo (Paris, France): 48.8588897, 2.320041
+ - Devoxx France (Paris, France): 48.8588897, 2.320041
+ - Devoxx UK (London, UK): 51.5074456, -0.1277653
+ - Newcrafts (Paris, France): 48.8588897, 2.320041
+ - CloudBees Days (Paris, France): 48.8588897, 2.320041
+ - Dev Day 19 (Berlin, Germany): 52.5173885, 13.3951309
+ - JSConf EU (Berlin, Germany): 52.5173885, 13.3951309
+ - Paris Container Day (Paris, France): 48.8588897, 2.320041
+ - CLUSIF (Paris, France): 48.8588897, 2.320041
+ - Best Of Web (Paris, France): 48.8588897, 2.320041
+ - OW2Con (Paris, France): 48.8588897, 2.320041
+ - INFORSID (Paris, France): 48.8588897, 2.320041
+ - Dev Break (Paris, France): 48.8588897, 2.320041
+ - DataXDay (Paris, France): 48.8588897, 2.320041
+ - JHipster Conf (Paris, France): 48.8588897, 2.320041
+ - HashiConf EU (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - GopherCon UK (London, UK): 51.5074456, -0.1277653
+ - Agile en Seine (Paris, France): 48.8588897, 2.320041
+ - Paris Web (Paris, France): 48.8588897, 2.320041
+ - DevOps Rex (Paris, France): 48.8588897, 2.320041
+ - VoxxedDays Microservices (Paris, France): 48.8588897, 2.320041
+ - Forum PHP Paris (Paris, France): 48.8588897, 2.320041
+ - React Advanced London (London, UK): 51.5074456, -0.1277653
+ - O'Reilly Software Architecture Conference (Berlin, Germany): 52.5173885, 13.3951309
+ - dotSwift (Paris, France): 48.8588897, 2.320041
+ - DevFest Paris (Paris, France): 48.8588897, 2.320041
+ - Frontend Developers Love (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - VueJS Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - dotPy (Paris, France): 48.8588897, 2.320041
+ - AWS Summit Paris (Paris, France): 48.8588897, 2.320041
+ - dotGo (Paris, France): 48.8588897, 2.320041
+ - KubeCon Europe (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - KubeCon Europe (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - O'Reilly Strata Data & AI London (London, UK): 51.5074456, -0.1277653
+ - Kafka Summit London (London, UK): 51.5074456, -0.1277653
+ - CodeMobile (London, UK): 51.5074456, -0.1277653
+ - GitHub Satellite (Paris, France): 48.8588897, 2.320041
+ - NewCrafts Paris (Paris, France): 48.8588897, 2.320041
+ - BestOfWeb (Paris, France): 48.8588897, 2.320041
+ - Flutter Conf Paris (Paris, France): 48.8588897, 2.320041
+ - Hack Commit Push (Paris, France): 48.8588897, 2.320041
+ - Serverless Days Paris (Paris, France): 48.8588897, 2.320041
+ - Scala Days Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Devoxx France (Paris, France): 48.8588897, 2.320041
+ - DroidCon Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Oxidize (Berlin, Germany): 52.5173885, 13.3951309
+ - GopherCon UK (London, UK): 51.5074456, -0.1277653
+ - Devoxx UK (London, UK): 51.5074456, -0.1277653
+ - DevOps Days London (London, UK): 51.5074456, -0.1277653
+ - DevopsDays Paris (Paris, France): 48.8588897, 2.320041
+ - SRECon (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Kubernetes Community Day (Paris, France): 48.8588897, 2.320041
+ - O'Reilly Infrastructure and Ops Conference (Berlin, Germany): 52.5173885, 13.3951309
+ - GopherCon Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Serverless Days Paris (Paris, France): 48.8588897, 2.320041
+ - Devoxx France (Paris, France): 48.8588897, 2.320041
+ - JS World (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - GopherCon UK (London, UK): 51.5074456, -0.1277653
+ - Devoxx UK (London, UK): 51.5074456, -0.1277653
+ - Paris Test Conf (Paris, France): 48.8588897, 2.320041
+ - Open Source Experience (Paris, France): 48.8588897, 2.320041
+ - GOTO Amsterdam 2021 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - The Privacy Engineer Conference (Paris, France): 48.8588897, 2.320041
+ - CityJS Conference London (London, UK): 51.5074456, -0.1277653
+ - React Conference Live (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - QCon London (London, UK): 51.5074456, -0.1277653
+ - SymfonyLive Paris 2022 (Paris, France): 48.8588897, 2.320041
+ - PyCon DE & PyData Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Devoxx France (Paris, France): 48.8588897, 2.320041
+ - Android Makers (Paris, France): 48.8588897, 2.320041
+ - DevOps Con (London, UK): 51.5074456, -0.1277653
+ - A11y Paris (Paris, France): 48.8588897, 2.320041
+ - Devoxx UK (London, UK): 51.5074456, -0.1277653
+ - LeadDev (London, UK): 51.5074456, -0.1277653
+ - OpenInfra Summit Berlin 2022 (Berlin, Germany): 52.5173885, 13.3951309
+ - France API (Paris, France): 48.8588897, 2.320041
+ - WeAreDevelopers World Congress (Berlin, Germany): 52.5173885, 13.3951309
+ - Prisma Day (Berlin, Germany): 52.5173885, 13.3951309
+ - VIVA Technology (Paris, France): 48.8588897, 2.320041
+ - DevOps Con (Berlin, Germany): 52.5173885, 13.3951309
+ - Domain-Driven Design Europe 2022 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - JavaDay du Paris JUG (Paris, France): 48.8588897, 2.320041
+ - devopsdays Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - ServerlessDays Paris (Paris, France): 48.8588897, 2.320041
+ - DDD Europe 2022 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Hack in Paris (Paris, France): 48.8588897, 2.320041
+ - Dev nation Day France (Paris, France): 48.8588897, 2.320041
+ - DroidCon Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Uptime (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Agile en Seine (Paris, France): 48.8588897, 2.320041
+ - GrafanaLive: Paris (Paris, France): 48.8588897, 2.320041
+ - GrafanaLive: Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - BigData & AI Paris (Paris, France): 48.8588897, 2.320041
+ - GrafanaLive: London (London, UK): 51.5074456, -0.1277653
+ - Paris Web (Paris, France): 48.8588897, 2.320041
+ - International Conference on Development and Learning (London, UK): 51.5074456, -0.1277653
+ - Forum PHP 2022 (Paris, France): 48.8588897, 2.320041
+ - EuroRust (Berlin, Germany): 52.5173885, 13.3951309
+ - NixCon 2022 (Paris, France): 48.8588897, 2.320041
+ - SREcon22 Europe/Middle East/Africa (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - API Days London (London, UK): 51.5074456, -0.1277653
+ - Open Source Experience (Paris, France): 48.8588897, 2.320041
+ - lbc² by leboncoin (Paris, France): 48.8588897, 2.320041
+ - SymfonyCon Disneyland Paris (Paris, France): 48.8588897, 2.320041
+ - Kubernetes Community Days UK 2022 (London, UK): 51.5074456, -0.1277653
+ - API Days Paris (Paris, France): 48.8588897, 2.320041
+ - Paris JUG Meetup - Young Blood (Paris, France): 48.8588897, 2.320041
+ - NDC London (London, UK): 51.5074456, -0.1277653
+ - Duck Conf (Paris, France): 48.8588897, 2.320041
+ - Very Tech Trip (Paris, France): 48.8588897, 2.320041
+ - State of Open Con (London, UK): 51.5074456, -0.1277653
+ - VueJs Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - KCD - Kubernetes Community Days Amsterdam 2023 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - PowerShell Day UK (London, UK): 51.5074456, -0.1277653
+ - Kubernetes Community Days France (Paris, France): 48.8588897, 2.320041
+ - FOSS Backstage (Berlin, Germany): 52.5173885, 13.3951309
+ - International PHP Conference Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Webinale (Berlin, Germany): 52.5173885, 13.3951309
+ - SymfonyLive Paris (Paris, France): 48.8588897, 2.320041
+ - ObservabilityCON Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - QCon London (London, UK): 51.5074456, -0.1277653
+ - AWS Summit Paris (Paris, France): 48.8588897, 2.320041
+ - Devoxx France (Paris, France): 48.8588897, 2.320041
+ - KotlinConf (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - ObservabilityCON Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Node Congress (Berlin, Germany): 52.5173885, 13.3951309
+ - Cloud-Native Rejekts (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - KubeCon + CloudNativeCon Europe 2023 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - WordPress Contributor Day (Paris, France): 48.8588897, 2.320041
+ - WordCamp Paris (Paris, France): 48.8588897, 2.320041
+ - Serverless Architecture Conference (London, UK): 51.5074456, -0.1277653
+ - API Conference London (London, UK): 51.5074456, -0.1277653
+ - We Love Speed (Paris, France): 48.8588897, 2.320041
+ - Devoxx UK (London, UK): 51.5074456, -0.1277653
+ - A11yParis (Paris, France): 48.8588897, 2.320041
+ - Vue.js Live Conference (London, UK): 51.5074456, -0.1277653
+ - Kafka Summit London (London, UK): 51.5074456, -0.1277653
+ - DevOps Enterprise Summit Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Newcrafts Paris (Paris, France): 48.8588897, 2.320041
+ - GOTO Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - React Summit (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Javaday (Paris, France): 48.8588897, 2.320041
+ - JSNation (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Flutter Connection (Paris, France): 48.8588897, 2.320041
+ - Serverless Days Paris (Paris, France): 48.8588897, 2.320041
+ - AWS Summit London (London, UK): 51.5074456, -0.1277653
+ - DDD Europe (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - OW2 openSource Conf (Paris, France): 48.8588897, 2.320041
+ - VivaTech (Viva Technology) (Paris, France): 48.8588897, 2.320041
+ - Berlin Buzzwords (Berlin, Germany): 52.5173885, 13.3951309
+ - DevOps Days Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - USI 2023 (Paris, France): 48.8588897, 2.320041
+ - GopherCon Europe 2023 (Berlin, Germany): 52.5173885, 13.3951309
+ - Google Cloud Summit France (Paris, France): 48.8588897, 2.320041
+ - Fluttercon (Berlin, Germany): 52.5173885, 13.3951309
+ - Droidcon Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - WeAreDevelopers World Congress (Berlin, Germany): 52.5173885, 13.3951309
+ - GopherCon UK 2023 (London, UK): 51.5074456, -0.1277653
+ - Apex Developer Summit (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - DevRelCon London (London, UK): 51.5074456, -0.1277653
+ - Agile en Seine (Paris, France): 48.8588897, 2.320041
+ - Euro IA 2023 - Information Architecture & UX conference (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - BIG DATA & AI PARIS 2023 (Paris, France): 48.8588897, 2.320041
+ - PromCon (Berlin, Germany): 52.5173885, 13.3951309
+ - Paris Web (Paris, France): 48.8588897, 2.320041
+ - SymfonyLive Berlin 2023 (Berlin, Germany): 52.5173885, 13.3951309
+ - ParisTestConf (Paris, France): 48.8588897, 2.320041
+ - Kubernetes Community Days UK 2023 (London, UK): 51.5074456, -0.1277653
+ - Droidcon London (London, UK): 51.5074456, -0.1277653
+ - Asynconf Event (Paris, France): 48.8588897, 2.320041
+ - City JS Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - IDM UK (London, UK): 51.5074456, -0.1277653
+ - do IOS (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - BDAI UK (London, UK): 51.5074456, -0.1277653
+ - Meeting C++ 2023 (Berlin, Germany): 52.5173885, 13.3951309
+ - Observability Con 2023 (London, UK): 51.5074456, -0.1277653
+ - HalfStack London (London, UK): 51.5074456, -0.1277653
+ - DevOps Live Paris (Paris, France): 48.8588897, 2.320041
+ - Kotlin Dev Day (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - DevFest London (London, UK): 51.5074456, -0.1277653
+ - Bsides Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - DENOG15 (Berlin, Germany): 52.5173885, 13.3951309
+ - Deutsche Open Source Tage (Berlin, Germany): 52.5173885, 13.3951309
+ - ESRM UK (London, UK): 51.5074456, -0.1277653
+ - DevOpsWorld (London, UK): 51.5074456, -0.1277653
+ - GOVSEC UK (London, UK): 51.5074456, -0.1277653
+ - PrestaShop Developer Conference (Paris, France): 48.8588897, 2.320041
+ - Open Source Experience (Paris, France): 48.8588897, 2.320041
+ - SIDO Paris (Paris, France): 48.8588897, 2.320041
+ - API Days Paris (Paris, France): 48.8588897, 2.320041
+ - TestJS Summit (Berlin, Germany): 52.5173885, 13.3951309
+ - TestJS Summit (Berlin, Germany): 52.5173885, 13.3951309
+ - TechRocks Summit (Paris, France): 48.8588897, 2.320041
+ - React Day Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - DevCon #20 - 100 % sécurité & qualité du code  (Paris, France): 48.8588897, 2.320041
+ - NDC London (London, UK): 51.5074456, -0.1277653
+ - Laracon EU (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - DevFest Paris (Paris, France): 48.8588897, 2.320041
+ - State of Open Con (London, UK): 51.5074456, -0.1277653
+ - PHP UK Conference (London, UK): 51.5074456, -0.1277653
+ - Vue.js Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - DEVWORLD CONFERENCE 2024 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Gartner IAM Summit (London, UK): 51.5074456, -0.1277653
+ - FOSS Backstage (Berlin, Germany): 52.5173885, 13.3951309
+ - FlowCon 2024 (Paris, France): 48.8588897, 2.320041
+ - DevCon #21 : 100% IA (Paris, France): 48.8588897, 2.320041
+ - AppDevCon (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - WebDevCon (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - ECS UK (London, UK): 51.5074456, -0.1277653
+ - Microsoft AI Tour (Paris, France): 48.8588897, 2.320041
+ - The DevOps Conference (London, UK): 51.5074456, -0.1277653
+ - pgDayParis (Paris, France): 48.8588897, 2.320041
+ - Cloud Native Rejekts EU 2024 (Paris, France): 48.8588897, 2.320041
+ - AppDeveloperCon (Paris, France): 48.8588897, 2.320041
+ - ArgoCon (Paris, France): 48.8588897, 2.320041
+ - BackstageCon (Paris, France): 48.8588897, 2.320041
+ - Cilium + eBPF Day (Paris, France): 48.8588897, 2.320041
+ - Cloud Native AI Day Europe (Paris, France): 48.8588897, 2.320041
+ - Cloud Native StartupFest Europe (Paris, France): 48.8588897, 2.320041
+ - Cloud Native Wasm Day Europe (Paris, France): 48.8588897, 2.320041
+ - Data on Kubernetes Day (Paris, France): 48.8588897, 2.320041
+ - Istio Day Europe (Paris, France): 48.8588897, 2.320041
+ - Kubeflow Summit Europe (Paris, France): 48.8588897, 2.320041
+ - Kubernetes on Edge Day Europe (Paris, France): 48.8588897, 2.320041
+ - Multi-Tenancy Con (Paris, France): 48.8588897, 2.320041
+ - Observabiity Day Europe (Paris, France): 48.8588897, 2.320041
+ - OpenTofu Day Europe (Paris, France): 48.8588897, 2.320041
+ - Platform Engineering Day (Paris, France): 48.8588897, 2.320041
+ - ThanosCon Europe (Paris, France): 48.8588897, 2.320041
+ - PaaS Forward by OVHcloud | Rancher by SUSE (Paris, France): 48.8588897, 2.320041
+ - Kafka Summit London (London, UK): 51.5074456, -0.1277653
+ - CloudNativeHacks (Paris, France): 48.8588897, 2.320041
+ - IT & Cybersecurity Meetings (Paris, France): 48.8588897, 2.320041
+ - KubeCon + CloudNativeCon Europe 2024 (Paris, France): 48.8588897, 2.320041
+ - Rust Nation UK (London, UK): 51.5074456, -0.1277653
+ - La Conf Data | IA (Paris, France): 48.8588897, 2.320041
+ - SymfonyLive Paris 2024 (Paris, France): 48.8588897, 2.320041
+ - AWS Summit Paris (Paris, France): 48.8588897, 2.320041
+ - QCon London (London, UK): 51.5074456, -0.1277653
+ - DevOpsCon London (London, UK): 51.5074456, -0.1277653
+ - API Conference London (London, UK): 51.5074456, -0.1277653
+ - International JavaScript Conference London (London, UK): 51.5074456, -0.1277653
+ - Serverless Architecture Conference London (London, UK): 51.5074456, -0.1277653
+ - AWS Summit Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - GrafanaCon (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - CI/CDay (Paris, France): 48.8588897, 2.320041
+ - UX Healthcare Europe (London, UK): 51.5074456, -0.1277653
+ - Devoxx France (Paris, France): 48.8588897, 2.320041
+ - React Connection 2024 (Paris, France): 48.8588897, 2.320041
+ - React Native Connection 2024 (Paris, France): 48.8588897, 2.320041
+ - AWS Summit London (London, UK): 51.5074456, -0.1277653
+ - Android Makers (Paris, France): 48.8588897, 2.320041
+ - DevOpsDays Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Devoxx UK (London, UK): 51.5074456, -0.1277653
+ - OpenInfra Day Germany (Berlin, Germany): 52.5173885, 13.3951309
+ - Camunda Con Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - AWS Summit Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Newcrafts Paris (Paris, France): 48.8588897, 2.320041
+ - Viva Tech (Paris, France): 48.8588897, 2.320041
+ - GOVSEC UK (London, UK): 51.5074456, -0.1277653
+ - Domain-Driven Design Europe 2024 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Webinale (Berlin, Germany): 52.5173885, 13.3951309
+ - Symfony Live Paris (Paris, France): 48.8588897, 2.320041
+ - OW2con (Paris, France): 48.8588897, 2.320041
+ - StaffPlus London (London, UK): 51.5074456, -0.1277653
+ - LeadDev London (London, UK): 51.5074456, -0.1277653
+ - JSNation (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - LeadingEng London (London, UK): 51.5074456, -0.1277653
+ - THE MERGE (Berlin, Germany): 52.5173885, 13.3951309
+ - PyData London (London, UK): 51.5074456, -0.1277653
+ - React Summit (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - SUSECON 2024 (Berlin, Germany): 52.5173885, 13.3951309
+ - GopherCon Europe 2024: Summer Edition in Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - DevOpsCon Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - IDM UK (London, UK): 51.5074456, -0.1277653
+ - UX Healthcare Europe (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Stackconf (Berlin, Germany): 52.5173885, 13.3951309
+ - BDAI UK (London, UK): 51.5074456, -0.1277653
+ - AI_dev: Open Source GenAI & ML Summit Europe (Paris, France): 48.8588897, 2.320041
+ - DevOpsDays Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Scrum Day London (London, UK): 51.5074456, -0.1277653
+ - DotJS (Paris, France): 48.8588897, 2.320041
+ - Fluttercon Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - DroidCon Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Automotive Grade Linux All Member Meeting Summer (Berlin, Germany): 52.5173885, 13.3951309
+ - WeAreDevelopers World Congress 2024 (Berlin, Germany): 52.5173885, 13.3951309
+ - SkySummit (Berlin, Germany): 52.5173885, 13.3951309
+ - TheGeekConf (Berlin, Germany): 52.5173885, 13.3951309
+ - Game Dev Local (London, UK): 51.5074456, -0.1277653
+ - GopherCon UK (London, UK): 51.5074456, -0.1277653
+ - Civo Navigate Europe 2024 (Berlin, Germany): 52.5173885, 13.3951309
+ - PGDay UK 2024 (London, UK): 51.5074456, -0.1277653
+ - PromCon EU (Berlin, Germany): 52.5173885, 13.3951309
+ - PGDay Lowlands 2024 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - TalosCon (London, UK): 51.5074456, -0.1277653
+ - API Days London (London, UK): 51.5074456, -0.1277653
+ - PyData Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - SREday 2024 (London, UK): 51.5074456, -0.1277653
+ - UX Healthcare Europe (Berlin, Germany): 52.5173885, 13.3951309
+ - BED-Con 2024 (Berlin, Germany): 52.5173885, 13.3951309
+ - Fyne Conf 2024 (Berlin, Germany): 52.5173885, 13.3951309
+ - CTO Craft Con (Berlin, Germany): 52.5173885, 13.3951309
+ - All Systems Go! (Berlin, Germany): 52.5173885, 13.3951309
+ - PyData Paris (Paris, France): 48.8588897, 2.320041
+ - DevOpsDays London (London, UK): 51.5074456, -0.1277653
+ - ServerSide.swift 2024  (London, UK): 51.5074456, -0.1277653
+ - Red Hat Summit: Connect 2024 (Paris, France): 48.8588897, 2.320041
+ - Zebu Live 2024 (London, UK): 51.5074456, -0.1277653
+ - Code BEAM Europe 2024 (Berlin, Germany): 52.5173885, 13.3951309
+ - CYBERGOV (London, UK): 51.5074456, -0.1277653
+ - Malt Tech Days 2024 (Paris, France): 48.8588897, 2.320041
+ - DotPy (Paris, France): 48.8588897, 2.320041
+ - NoCode Summit 2024 (Paris, France): 48.8588897, 2.320041
+ - DotAI (Paris, France): 48.8588897, 2.320041
+ - KCD UK (London, UK): 51.5074456, -0.1277653
+ - React Advanced London (London, UK): 51.5074456, -0.1277653
+ - KanDDDinsky 2024 (Berlin, Germany): 52.5173885, 13.3951309
+ - droidcon London 2024 (London, UK): 51.5074456, -0.1277653
+ - LeadDev Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - IDM UK (London, UK): 51.5074456, -0.1277653
+ - Master Dev De France (Paris, France): 48.8588897, 2.320041
+ - HalfStack (London, UK): 51.5074456, -0.1277653
+ - Do iOS 2024 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Kotlin Dev Day (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Meeting C++ (Berlin, Germany): 52.5173885, 13.3951309
+ - DevFest London (London, UK): 51.5074456, -0.1277653
+ - Cloud Expo Europe (Paris, France): 48.8588897, 2.320041
+ - OVHcloud Summit (Paris, France): 48.8588897, 2.320041
+ - ESRM UK (London, UK): 51.5074456, -0.1277653
+ - SREday 2024 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Tech Rocks Summit (Paris, France): 48.8588897, 2.320041
+ - Generation AI (Paris, France): 48.8588897, 2.320041
+ - APIdays Paris (Paris, France): 48.8588897, 2.320041
+ - DevOpsRex (Paris, France): 48.8588897, 2.320041
+ - Open Source Experience (Paris, France): 48.8588897, 2.320041
+ - GraphQL Day Europe (Paris, France): 48.8588897, 2.320041
+ - Winter of C++ (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Dutch Cloud Native Day 2024 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Open Source Software Stewards and Manufacturers Workshop (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - React Day Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Elastic{ON} (Paris, France): 48.8588897, 2.320041
+ - PyCon+Web 2025 (Berlin, Germany): 52.5173885, 13.3951309
+ - Agile Games Île-de-France 2025 (Paris, France): 48.8588897, 2.320041
+ - NDC London (London, UK): 51.5074456, -0.1277653
+ - Laracon EU 2025 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - State Of Open Con 2025 (London, UK): 51.5074456, -0.1277653
+ - CDAO UK (London, UK): 51.5074456, -0.1277653
+ - PHP UK Conference 2025 (London, UK): 51.5074456, -0.1277653
+ - Rust Nation UK 2025 (London, UK): 51.5074456, -0.1277653
+ - Tech Internals Conf (Berlin, Germany): 52.5173885, 13.3951309
+ - Devworld Conference 2025 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Paris TS La Conf (Paris, France): 48.8588897, 2.320041
+ - Replay 2025 (London, UK): 51.5074456, -0.1277653
+ - Yellowhat (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - DevCon #24 : 100% IA (Paris, France): 48.8588897, 2.320041
+ - CTO Craft Con London (London, UK): 51.5074456, -0.1277653
+ - Vuejs Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Oracle CloudWorld Tour Paris (Paris, France): 48.8588897, 2.320041
+ - .NET MAUI Day London (London, UK): 51.5074456, -0.1277653
+ - Rust In Paris 2025 (Paris, France): 48.8588897, 2.320041
+ - International Women's Day London 2025 (London, UK): 51.5074456, -0.1277653
+ - Appdevcon 2025 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Dutch PHP Conference 2025 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Webdevcon 2025 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - React Paris (Paris, France): 48.8588897, 2.320041
+ - PGDay Paris (Paris, France): 48.8588897, 2.320041
+ - Gartner Identity & Access Management Summit (London, UK): 51.5074456, -0.1277653
+ - ParisTestConf (Paris, France): 48.8588897, 2.320041
+ - The DEVOPS Conference London 2025 (London, UK): 51.5074456, -0.1277653
+ - SREday London 2025 Q1 (London, UK): 51.5074456, -0.1277653
+ - SymfonyLive Paris 2025 (Paris, France): 48.8588897, 2.320041
+ - Monki Gras 2025: Sustaining Software Development Craft (London, UK): 51.5074456, -0.1277653
+ - Cloud Native Rejekts EU 2025 (London, UK): 51.5074456, -0.1277653
+ - Platform Engineering Day Europe (London, UK): 51.5074456, -0.1277653
+ - OpenTofu Day Europe (London, UK): 51.5074456, -0.1277653
+ - OpenFeature Summit Europe (London, UK): 51.5074456, -0.1277653
+ - Observability Day Europe (London, UK): 51.5074456, -0.1277653
+ - Linkerd Day Europe (London, UK): 51.5074456, -0.1277653
+ - Kubernetes on Edge Day Europe (London, UK): 51.5074456, -0.1277653
+ - Kubeflow Summit Europe (London, UK): 51.5074456, -0.1277653
+ - Istio Day Europe (London, UK): 51.5074456, -0.1277653
+ - EnvoyCon Europe (London, UK): 51.5074456, -0.1277653
+ - Data On Kubernetes Day Europe (London, UK): 51.5074456, -0.1277653
+ - Cloud Native University Europe (London, UK): 51.5074456, -0.1277653
+ - Cloud Native + Kubernetes AI Day Europe (London, UK): 51.5074456, -0.1277653
+ - CiliumCon Europe (London, UK): 51.5074456, -0.1277653
+ - BackstageCon Europe (London, UK): 51.5074456, -0.1277653
+ - ArgoCon Europe (London, UK): 51.5074456, -0.1277653
+ - KubeCon + CloudNativeCon EU 2025 (London, UK): 51.5074456, -0.1277653
+ - DotJS (Paris, France): 48.8588897, 2.320041
+ - Voxxed Days Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - SymfonyLive Berlin 2025 (Berlin, Germany): 52.5173885, 13.3951309
+ - Agile meets Architecture 2025 (Berlin, Germany): 52.5173885, 13.3951309
+ - Flutter Connection 2025 (Paris, France): 48.8588897, 2.320041
+ - QCon London (London, UK): 51.5074456, -0.1277653
+ - Devoxx France (Paris, France): 48.8588897, 2.320041
+ - MODERN ENDPOINT MANAGEMENT EMEA SUMMIT 2025 (Paris, France): 48.8588897, 2.320041
+ - CityJS London (London, UK): 51.5074456, -0.1277653
+ - OpenSearchCon Europe 2025 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - GOSIM AI Paris (Paris, France): 48.8588897, 2.320041
+ - Devoxx UK (London, UK): 51.5074456, -0.1277653
+ - API Conference London 2025 (London, UK): 51.5074456, -0.1277653
+ - International Javascript Conference iJS London (London, UK): 51.5074456, -0.1277653
+ - Camunda Community Summit (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Current London 2025 (London, UK): 51.5074456, -0.1277653
+ - Oracle Dev Days (Paris, France): 48.8588897, 2.320041
+ - GITEX EUROPE (Berlin, Germany): 52.5173885, 13.3951309
+ - Flupa UX Days 2025 (Paris, France): 48.8588897, 2.320041
+ - Sylius Days 2025 (Paris, France): 48.8588897, 2.320041
+ - OpenSIPS Summit 2025 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Modern Workplace Conference Paris 2025 (Paris, France): 48.8588897, 2.320041
+ - Laravel Live UK 2025 (London, UK): 51.5074456, -0.1277653
+ - NVIDIA GTC Paris (Paris, France): 48.8588897, 2.320041
+ - JSNation (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - React Summit (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - GopherCon Europe 2025: Summer Edition in Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Devopsdays Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - SQLBits 2025 - General Sessions (London, UK): 51.5074456, -0.1277653
+ - Open Source in Finance Forum London 2025 (London, UK): 51.5074456, -0.1277653
+ - PlatformCon Live Day London 2025 (London, UK): 51.5074456, -0.1277653
+ - Rust Paris 2025 (Paris, France): 48.8588897, 2.320041
+ - SREday Amsterdam 2025 Q2 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Automotive Grade Linux All Member Meeting Summer (Berlin, Germany): 52.5173885, 13.3951309
+ - WeAreDevelopers World Congress 2025 (Berlin, Germany): 52.5173885, 13.3951309
+ - MozCon (London, UK): 51.5074456, -0.1277653
+ - GopherCon UK (London, UK): 51.5074456, -0.1277653
+ - Open Source Summit Europe (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Container Plumbing Days (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - OpenSSF Community Day Europe 2025 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - AI_dev: Open Source GenAI & ML Summit Europe (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Linux Security Summit Europe (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - PyData Berlin 2025 (Berlin, Germany): 52.5173885, 13.3951309
+ - GraphQLConf (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - SREday London 2025 Q3 (London, UK): 51.5074456, -0.1277653
+ - EmberFest 2025 (London, UK): 51.5074456, -0.1277653
+ - AI4Devs Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Kernel Recipes (Paris, France): 48.8588897, 2.320041
+ - APIdays London (London, UK): 51.5074456, -0.1277653
+ - OWASP AppSec France 2025 (Paris, France): 48.8588897, 2.320041
+ - AI Engineer Paris (Paris, France): 48.8588897, 2.320041
+ - Green IO London (London, UK): 51.5074456, -0.1277653
+ - DevOpsDays London 2025 (London, UK): 51.5074456, -0.1277653
+ - Fluttercon Europe 2025 (Berlin, Germany): 52.5173885, 13.3951309
+ - droidcon Berlin 2025 (Berlin, Germany): 52.5173885, 13.3951309
+ - PyData Amsterdam 2025 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Paris Web 2025 (Paris, France): 48.8588897, 2.320041
+ - Civo Navigate London (London, UK): 51.5074456, -0.1277653
+ - PyData Paris 2025 (Paris, France): 48.8588897, 2.320041
+ - MCP Dev Summit (London, UK): 51.5074456, -0.1277653
+ - ServerSide.swift 2025 (London, UK): 51.5074456, -0.1277653
+ - Swift Connection 2025 (Paris, France): 48.8588897, 2.320041
+ - Jax London (London, UK): 51.5074456, -0.1277653
+ - Redis Released Paris (Paris, France): 48.8588897, 2.320041
+ - ObservabilityCON 2025 (London, UK): 51.5074456, -0.1277653
+ - SIG 2025 (Paris, France): 48.8588897, 2.320041
+ - DevCon #25 : informatique quantique (Paris, France): 48.8588897, 2.320041
+ - EuroRust 2025 (Paris, France): 48.8588897, 2.320041
+ - Fast Flow Conf UK 2025 (Platform Engineering Edition) (London, UK): 51.5074456, -0.1277653
+ - PlatformCon25 Live Day Paris (Paris, France): 48.8588897, 2.320041
+ - Prompt Engineering Conference 2025 (London, UK): 51.5074456, -0.1277653
+ - ScalaIO 2025 (Paris, France): 48.8588897, 2.320041
+ - OpenInfra Summit Europe (Paris, France): 48.8588897, 2.320041
+ - Zebu Live 2025 (London, UK): 51.5074456, -0.1277653
+ - Platform Engineering Summit (London, UK): 51.5074456, -0.1277653
+ - droidcon London 2025 (London, UK): 51.5074456, -0.1277653
+ - LeadDev Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - NewCrafts 2025 (Paris, France): 48.8588897, 2.320041
+ - Tech Show Paris (Paris, France): 48.8588897, 2.320041
+ - Red Hat Summit: Connect Paris 2025 (Paris, France): 48.8588897, 2.320041
+ - dotAI 2025 (Paris, France): 48.8588897, 2.320041
+ - APIdays Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - MQ Summit 2025 (Berlin, Germany): 52.5173885, 13.3951309
+ - SREday Amsterdam 2025 Q4 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - AutomationSTAR (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Do iOS 2025 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - InnerSource Summit (Berlin, Germany): 52.5173885, 13.3951309
+ - SwampUp Europe (Berlin, Germany): 52.5173885, 13.3951309
+ - International Conference on Artificial Intelligence & Machine Learning (London, UK): 51.5074456, -0.1277653
+ - CTO Craft Con: The Finance Edition (London, UK): 51.5074456, -0.1277653
+ - SREday Paris 2025 Q4 (Paris, France): 48.8588897, 2.320041
+ - OVHcloud Summit (Paris, France): 48.8588897, 2.320041
+ - DevFest Paris 2025 (Paris, France): 48.8588897, 2.320041
+ - DevFest London 2025 (London, UK): 51.5074456, -0.1277653
+ - DevFest Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Forward Data & AI Conference (Paris, France): 48.8588897, 2.320041
+ - MAD Summit - Der Summit für Software-Design, pragmatische Backend-Entwicklung und Fullstack-Lösungen (Berlin, Germany): 52.5173885, 13.3951309
+ - Software Architecture Gathering (Berlin, Germany): 52.5173885, 13.3951309
+ - SymfonyCon Amsterdam 2025 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - React Advanced London (London, UK): 51.5074456, -0.1277653
+ - React Advanced London (London, UK): 51.5074456, -0.1277653
+ - Tech Rocks Summit 2025 (Paris, France): 48.8588897, 2.320041
+ - Black Hat Europe 2025 (London, UK): 51.5074456, -0.1277653
+ - APIdays Paris (Paris, France): 48.8588897, 2.320041
+ - Green IO Paris (Paris, France): 48.8588897, 2.320041
+ - Devops REX (Paris, France): 48.8588897, 2.320041
+ - Open Source Experience (Paris, France): 48.8588897, 2.320041
+ - Data Left Unattended - Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - DevCon #26 : sécurité / post-quantique / hacking (Paris, France): 48.8588897, 2.320041
+ - NDC London (London, UK): 51.5074456, -0.1277653
+ - Software Heritage Symposium (Paris, France): 48.8588897, 2.320041
+ - Epitech Summit 2026 - Paris (Paris, France): 48.8588897, 2.320041
+ - Cloud Native Days France 2026 (Paris, France): 48.8588897, 2.320041
+ - BUILD London (London, UK): 51.5074456, -0.1277653
+ - Atlas Camp Amsterdam: Atlassian's Premier Dev Conference (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Container Days London (London, UK): 51.5074456, -0.1277653
+ - ObservabilityCON on the Road (Paris, France): 48.8588897, 2.320041
+ - PHP UK (London, UK): 51.5074456, -0.1277653
+ - Cloud & AI Infrastructure London 2026 (London, UK): 51.5074456, -0.1277653
+ - DevOps Not Dead (London, UK): 51.5074456, -0.1277653
+ - CTO Craft Con: London (London, UK): 51.5074456, -0.1277653
+ - Appdevcon (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Webdevcon (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Dutch PHP Conference 2026 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Appdevcon Conference 2026 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Webdevcon Conference 2026 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Dutch AI Conference (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - SREday London 2026 Q1 (London, UK): 51.5074456, -0.1277653
+ - Vuejs Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - FOSS Backstage (Berlin, Germany): 52.5173885, 13.3951309
+ - QCon London (London, UK): 51.5074456, -0.1277653
+ - Monkigras 2026 (London, UK): 51.5074456, -0.1277653
+ - Cloud Native Rejekts EU 2026 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Agentics Day: MCP + Agents Europe (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - ArgoCon (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - BackstageCon (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - CiliumCon (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Cloud Native Telco Day (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - FluxCon (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - KeycloakCon Europe (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Cloud Native AI + Kubeflow Day Europe (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Kubernetes on Edge Day (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - KyvernoCon (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Observability Day (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Open Source SecurityCon (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - OpenTofu Day Europe (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Platform Engineering Day (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - WasmCon (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - KubeCon + CloudNativeCon Europe 2026 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - SAFe and AI Summit (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Cloud Native University - Cloud Native Theater @ Kubecon EU 2026 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Istio Day - Cloud Native Theater @ Kubecon EU 2026 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Data on Kubernetes - Cloud Native Theater @ Kubecon EU 2026 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - EnvoyCon - Cloud Native Theater @ Kubecon EU 2026 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Kubevirt Summit - Cloud Native Theater @ Kubecon EU 2026 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - SymfonyLive Paris 2026 (Paris, France): 48.8588897, 2.320041
+ - REACT PARIS (Paris, France): 48.8588897, 2.320041
+ - ParisTestConf (Paris, France): 48.8588897, 2.320041
+ - AWS Summit Paris (Paris, France): 48.8588897, 2.320041
+ - CityJS London (London, UK): 51.5074456, -0.1277653
+ - AndroidMakers by droidcon (Paris, France): 48.8588897, 2.320041
+ - SUGCON Europe 2026 (London, UK): 51.5074456, -0.1277653
+ - MLcon Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - DevOpsCon Amsterdam (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - AgentCon London (London, UK): 51.5074456, -0.1277653
+ - Devoxx France 2026 (Paris, France): 48.8588897, 2.320041
+ - SymfonyLive Berlin 2026 (Berlin, Germany): 52.5173885, 13.3951309
+ - Rise of AI Converence (Berlin, Germany): 52.5173885, 13.3951309
+ - Devoxx UK 2026 (London, UK): 51.5074456, -0.1277653
+ - Devworld Conference (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - API Conference (London, UK): 51.5074456, -0.1277653
+ - MLcon London (London, UK): 51.5074456, -0.1277653
+ - DevOpsCon London (London, UK): 51.5074456, -0.1277653
+ - International JavaScript Conference London (London, UK): 51.5074456, -0.1277653
+ - SDD 2026 (London, UK): 51.5074456, -0.1277653
+ - AFUP Day 2026 Paris (Paris, France): 48.8588897, 2.320041
+ - UXDX EMEA 2026 (Berlin, Germany): 52.5173885, 13.3951309
+ - LLMday London 2026 Q2 (London, UK): 51.5074456, -0.1277653
+ - NG Baguette Conf 2026 (Paris, France): 48.8588897, 2.320041
+ - LDX3 London (London, UK): 51.5074456, -0.1277653
+ - Europe's Leading Cyber Security Event | Infosecurity Europe (London, UK): 51.5074456, -0.1277653
+ - Berlin Buzzwords (Berlin, Germany): 52.5173885, 13.3951309
+ - Webinale (Berlin, Germany): 52.5173885, 13.3951309
+ - International PHP Conference (Berlin, Germany): 52.5173885, 13.3951309
+ - London Tech Week 2026 (London, UK): 51.5074456, -0.1277653
+ - JSNation (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - React Summit (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - #mtpcon (London, UK): 51.5074456, -0.1277653
+ - IT Security Summit Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - DevOpsCon Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - VivaTech (Paris, France): 48.8588897, 2.320041
+ - PlatformCON Live Day London (London, UK): 51.5074456, -0.1277653
+ - Open Source in Finance Forum London (London, UK): 51.5074456, -0.1277653
+ - DAM Europe (London, UK): 51.5074456, -0.1277653
+ - WeAreDevelopers World Congress 2026 - Europe (Berlin, Germany): 52.5173885, 13.3951309
+ - 4th Tech Summit on Artificial Intelligence & Robotics (Paris, France): 48.8588897, 2.320041
+ - ICSTP 2026 (Amsterdam, Netherlands): 52.3730796, 4.8924534
+ - Hatch Conference (Berlin, Germany): 52.5173885, 13.3951309
+ - Civo Navigate London 2026 (London, UK): 51.5074456, -0.1277653
+ - PlatformCon Live Day Paris 2026 (Paris, France): 48.8588897, 2.320041
+ - Devopsdays Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Automotive Grade Linux All Member Meeting Europe (Berlin, Germany): 52.5173885, 13.3951309
+ - next.app devcon (Berlin, Germany): 52.5173885, 13.3951309
+ - swiftcon@next.app devcon (Berlin, Germany): 52.5173885, 13.3951309
+ - Encode London 2026 (London, UK): 51.5074456, -0.1277653
+ - LeadDev Berlin (Berlin, Germany): 52.5173885, 13.3951309
+ - Leading Design London (London, UK): 51.5074456, -0.1277653
+ - droidcon London (London, UK): 51.5074456, -0.1277653
+ - State of Open Conference 27 - SOOCON 27 (London, UK): 51.5074456, -0.1277653
+
+Sample without coordinates:
+ - Craft Conf (City: Budapest, Loc: Budapest (Hungary))
+ - O'reilly oscon (City: Austin, TX, Loc: Austin, TX (USA))
+ - Microsoft Build (City: Seattle, WA, Loc: Seattle, WA (USA))
+ - Riviera DEV (City: Sophia Antipolis, Loc: Sophia Antipolis (France))
+ - Ace Conf (City: Krakow, Loc: Krakow (Poland))

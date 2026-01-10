@@ -1,0 +1,11 @@
+
+--- Search results for 'Andrew Ng' (limit=100, count=100) ---
+TOP: Name: A. Ng, H-Index: 128, ID: 34699434
+FOUND TARGET! ID 34699434 found at index 0 in sorted list.
+
+--- Search results for 'A. Ng' (limit=20, count=20) ---
+TOP: Name: A. Ng, H-Index: 8, ID: 50996264
+TARGET NOT FOUND
+
+--- Search results for 'Andrew Ng machine learning' (limit=20, count=0) ---
+NO DATA
