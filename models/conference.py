@@ -41,6 +41,9 @@ class Conference(db.Model):
     location = db.Column(db.String(500), nullable=True)  # Google Maps format
     featured_papers = db.Column(db.JSON, nullable=True)  # Array of paper titles
     featured_workshops = db.Column(db.Text, nullable=True)
+    
+    # Classification fields
+    classification = db.Column(db.JSON, nullable=True)  # {primary: str, secondary: [str], confidence: float}
 
     # Relationships
     themes = db.relationship('Theme', secondary=conference_themes, backref=db.backref('conferences', lazy='dynamic'))

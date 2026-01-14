@@ -397,7 +397,8 @@ payload = fields.Dict(required=True)  # ANY dict accepted
 
 ---
 
-## 6. FLOW ANALYSIS & CRITICAL INTERACTIONS
+
+
 
 ### Flow 1: Conference Submission → Approval → Creation
 

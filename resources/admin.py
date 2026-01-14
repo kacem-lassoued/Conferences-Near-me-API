@@ -11,10 +11,9 @@ from datetime import datetime
 blp = Blueprint("admin", __name__, description="Admin operations")
 
 def check_admin():
+    """Returns True if user IS admin, False otherwise"""
     claims = get_jwt()
-    if claims.get("role") != "admin":
-        return True
-    return False
+    return claims.get("role") == "admin"
 
 
 # ============================================================================
@@ -26,14 +25,14 @@ class PendingList(MethodView):
     @jwt_required()
     def get(self):
         """Get all pending submissions (Admin only)"""
-        if check_admin(): return {"message": "Admin required"}, 403
+        if not check_admin(): return {"message": "Admin required"}, 403
         pending = PendingSubmission.query.filter_by(status='pending').all()
         return [{"id": p.id, "type": p.type, "payload": p.payload, "status": p.status} for p in pending]
     
     @jwt_required()
     def delete(self):
         """Delete all pending submissions (Admin only)"""
-        if check_admin(): return {"message": "Admin required"}, 403
+        if not check_admin(): return {"message": "Admin required"}, 403
         
         pending_count = PendingSubmission.query.filter_by(status='pending').count()
         PendingSubmission.query.filter_by(status='pending').delete()
@@ -56,7 +55,7 @@ class PendingSubmissionDetail(MethodView):
     @blp.response(200)
     def put(self, update_data, submission_id):
         """Update a pending submission's payload (Admin only)"""
-        if check_admin(): return {"message": "Admin required"}, 403
+        if not check_admin(): return {"message": "Admin required"}, 403
         
         submission = PendingSubmission.query.get_or_404(submission_id)
         
@@ -85,7 +84,7 @@ class ApproveSubmission(MethodView):
     @jwt_required()
     @blp.arguments(SubmissionActionSchema)
     def post(self, action_data):
-        if check_admin(): return {"message": "Admin required"}, 403
+        if not check_admin(): return {"message": "Admin required"}, 403
         
         submission_id = action_data['submission_id']
         submission = PendingSubmission.query.get_or_404(submission_id)
@@ -102,7 +101,8 @@ class ApproveSubmission(MethodView):
                 name=payload.get('name'),
                 organizers=payload.get('organizers'),
                 location=payload.get('location'),
-                featured_workshops=payload.get('featured_workshops')
+                featured_workshops=payload.get('featured_workshops'),
+                classification=payload.get('classification')  # Add classification from enrichment
             )
             db.session.add(conf)
             db.session.flush()  # Get conference ID
@@ -201,7 +201,7 @@ class RejectSubmission(MethodView):
     @jwt_required()
     @blp.arguments(SubmissionActionSchema)
     def post(self, action_data):
-        if check_admin(): return {"message": "Admin required"}, 403
+        if not check_admin(): return {"message": "Admin required"}, 403
         
         submission_id = action_data['submission_id']
         submission = PendingSubmission.query.get_or_404(submission_id)

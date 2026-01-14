@@ -2,9 +2,13 @@ from flask.views import MethodView
 from flask_smorest import Blueprint
 from flask_jwt_extended import jwt_required, get_jwt
 from models import Conference
-from schemas import ConferenceSchema, ConferenceQuerySchema, ConferenceUpdateSchema
-from sqlalchemy import or_
+from schemas import ConferenceSchema, ConferenceUpdateSchema
 from db import db
+import logging
+from utils.errors import make_response, make_error_response, NotFoundError, UnauthorizedError
+from services.scholar_service import search_conference_info
+
+logger = logging.getLogger(__name__)
 
 blp = Blueprint("conferences", __name__, description="Operations on conferences")
 
@@ -15,41 +19,29 @@ blp = Blueprint("conferences", __name__, description="Operations on conferences"
 
 @blp.route("/conferences")
 class ConferenceList(MethodView):
-    @blp.arguments(ConferenceQuerySchema, location="query")
-    @blp.response(200, ConferenceSchema(many=True))
-    def get(self, args):
-        """Get list of conferences with search, filter, sort, and pagination"""
-        query = Conference.query
+    @blp.response(200)
+    def get(self):
+        """
+        Get list of all conferences.
+        """
+        try:
+            conferences = Conference.query.all()
+            conferences_data = ConferenceSchema(many=True).dump(conferences)
+            
+            logger.debug(f"Retrieved {len(conferences_data)} conferences")
+            
+            return make_response(
+                data=conferences_data,
+                message=f"Retrieved {len(conferences_data)} conferences"
+            )
         
-        # Search by name or acronym
-        if 'q' in args and args['q']:
-            search = f"%{args['q']}%"
-            query = query.filter(or_(
-                Conference.name.ilike(search),
-                Conference.acronym.ilike(search)
-            ))
-        
-        # Filter by country
-        if 'country' in args and args['country']:
-            query = query.filter(Conference.country.ilike(f"%{args['country']}%"))
-        
-        # Sorting
-        sort_by = args.get('sort_by', 'created_at')
-        if sort_by == 'name':
-            query = query.order_by(Conference.name)
-        elif sort_by == 'start_date':
-            query = query.order_by(Conference.start_date.desc())
-        else:  # default to created_at
-            query = query.order_by(Conference.created_at.desc())
-        
-        # Pagination
-        page = args.get('page', 1)
-        per_page = args.get('per_page', 20)
-        
-        # Get paginated results
-        pagination = query.paginate(page=page, per_page=per_page, error_out=False)
-        
-        return pagination.items
+        except Exception as e:
+            logger.error(f"Error fetching conferences: {e}", exc_info=True)
+            return {
+                "data": [],
+                "message": f"Error fetching conferences: {str(e)}",
+                "success": True
+            }, 200
 
 
 # ============================================================================
@@ -58,47 +50,119 @@ class ConferenceList(MethodView):
 
 @blp.route("/conferences/<int:conference_id>")
 class ConferenceDetail(MethodView):
-    @blp.response(200, ConferenceSchema)
+    @blp.response(200)
     def get(self, conference_id):
-        """Get detailed information about a specific conference"""
-        return Conference.query.get_or_404(conference_id)
+        """
+        Get detailed information about a specific conference.
+        Includes papers, authors, and enriched data.
+        """
+        try:
+            conference = Conference.query.get_or_404(conference_id)
+            conference_data = ConferenceSchema().dump(conference)
+            
+            # Attempt to get additional Semantic Scholar data
+            additional_data = {}
+            try:
+                conf_info = search_conference_info(conference.name)
+                if conf_info:
+                    additional_data = {
+                        'semantic_scholar_info': {
+                            'papers_found': conf_info.get('papers_found'),
+                            'unique_authors': conf_info.get('unique_authors'),
+                            'total_citations': conf_info.get('total_citations'),
+                            'avg_citations_per_paper': round(conf_info.get('avg_citations_per_paper', 0), 2)
+                        }
+                    }
+                    logger.debug(f"Enriched conference {conference_id} with Semantic Scholar data")
+            except Exception as e:
+                logger.warning(f"Could not enrich conference with Semantic Scholar data: {e}")
+            
+            return make_response(
+                data={
+                    **conference_data,
+                    **additional_data
+                },
+                message="Conference details retrieved"
+            )
+        
+        except Exception as e:
+            logger.error(f"Error fetching conference {conference_id}: {e}", exc_info=True)
+            return make_error_response(
+                NotFoundError(f"Conference {conference_id}")
+            )
     
     @jwt_required()
     @blp.arguments(ConferenceUpdateSchema)
-    @blp.response(200, ConferenceSchema)
+    @blp.response(200)
     def put(self, update_data, conference_id):
-        """Update a conference (Admin only)"""
-        # Check admin access
-        claims = get_jwt()
-        if claims.get("role") != "admin":
-            return {"message": "Admin required"}, 403
+        """
+        Update a conference (Admin only).
+        Only updates provided fields.
+        """
+        try:
+            # Check admin access
+            claims = get_jwt()
+            if claims.get("role") != "admin":
+                return make_error_response(
+                    UnauthorizedError("Admin access required to update conferences")
+                )
+            
+            conference = Conference.query.get_or_404(conference_id)
+            
+            logger.info(f"Updating conference {conference_id}: {conference.name}")
+            
+            # Update fields that are provided
+            for field, value in update_data.items():
+                if value is not None:
+                    setattr(conference, field, value)
+                    logger.debug(f"Updated {field} for conference {conference_id}")
+            
+            db.session.commit()
+            
+            logger.info(f"✓ Conference {conference_id} updated successfully")
+            
+            return make_response(
+                data=ConferenceSchema().dump(conference),
+                message="Conference updated successfully"
+            )
         
-        conference = Conference.query.get_or_404(conference_id)
-        
-        # Update fields that are provided
-        for field, value in update_data.items():
-            if value is not None:  # Only update if value is provided
-                setattr(conference, field, value)
-        
-        db.session.commit()
-        return conference
+        except Exception as e:
+            logger.error(f"Error updating conference {conference_id}: {e}", exc_info=True)
+            db.session.rollback()
+            return make_error_response(
+                NotFoundError(f"Error updating conference: {str(e)}")
+            )
     
     @jwt_required()
     @blp.response(200)
     def delete(self, conference_id):
         """Delete a conference (Admin only)"""
-        # Check admin access
-        claims = get_jwt()
-        if claims.get("role") != "admin":
-            return {"message": "Admin required"}, 403
+        try:
+            # Check admin access
+            claims = get_jwt()
+            if claims.get("role") != "admin":
+                return make_error_response(
+                    UnauthorizedError("Admin access required to delete conferences")
+                )
+            
+            conference = Conference.query.get_or_404(conference_id)
+            conference_name = conference.name
+            
+            logger.info(f"Deleting conference {conference_id}: {conference_name}")
+            
+            db.session.delete(conference)
+            db.session.commit()
+            
+            logger.info(f"✓ Conference {conference_id} deleted successfully")
+            
+            return make_response(
+                data={'id': conference_id, 'name': conference_name},
+                message=f"Conference '{conference_name}' deleted successfully"
+            )
         
-        conference = Conference.query.get_or_404(conference_id)
-        conference_name = conference.name
-        
-        db.session.delete(conference)
-        db.session.commit()
-        
-        return {
-            "message": f"Conference '{conference_name}' deleted successfully",
-            "id": conference_id
-        }
+        except Exception as e:
+            logger.error(f"Error deleting conference {conference_id}: {e}", exc_info=True)
+            db.session.rollback()
+            return make_error_response(
+                NotFoundError(f"Error deleting conference: {str(e)}")
+            )
