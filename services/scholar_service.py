@@ -2,6 +2,10 @@
 Semantic Scholar API Service
 Fetches author h-index and academic information from Semantic Scholar.
 API Documentation: https://api.semanticscholar.org/
+
+CORE API Service
+Fetches conference rankings and metadata from CORE.
+API Documentation: https://core.ac.uk/services/api/
 """
 
 import requests
@@ -9,6 +13,8 @@ from typing import Optional, Dict, List
 import time
 from difflib import SequenceMatcher
 import logging
+import os
+from datetime import datetime, timedelta
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -16,8 +22,16 @@ logger = logging.getLogger(__name__)
 # Semantic Scholar API base URL
 BASE_URL = "https://api.semanticscholar.org/graph/v1"
 
+# CORE API configuration
+CORE_API_URL = "https://api.core.ac.uk/v3"
+CORE_API_KEY = os.environ.get("CORE_API_KEY", None)  # Optional - used if available
+CORE_RATE_LIMIT_DELAY = 0.5  # 500ms delay between requests (respects ~2 req/sec limit)
+
 # Cache to avoid redundant API calls (in-memory, simple implementation)
 _author_cache = {}
+_conference_cache = {}
+_core_cache = {}
+_last_core_request_time = 0
 _conference_cache = {}
 _papers_cache = {}
 
@@ -499,6 +513,278 @@ def classify_conference(conference_name: str, papers_data: Optional[List[Dict]] 
     except Exception as e:
         logger.error(f"Error classifying conference '{conference_name}': {e}", exc_info=True)
         return None
+
+
+def _respect_core_rate_limit():
+    """Respect CORE API rate limits (max ~2 requests per second)"""
+    global _last_core_request_time
+    time_since_last = time.time() - _last_core_request_time
+    if time_since_last < CORE_RATE_LIMIT_DELAY:
+        time.sleep(CORE_RATE_LIMIT_DELAY - time_since_last)
+    _last_core_request_time = time.time()
+
+
+def query_core_conference(conference_name: str) -> Optional[Dict]:
+    """
+    Query CORE API for conference information and rankings.
+    
+    Args:
+        conference_name: Name of the conference (e.g., "NeurIPS", "ICML")
+    
+    Returns:
+        Dictionary with CORE data or None if not found
+        Format: {
+            'display_name': str,
+            'rank': 'A'|'B'|'C'|'*'|None,
+            'h_index': int,
+            'citation_count': int,
+            'paper_count': int,
+            'source': 'core',
+            'confidence': float
+        }
+    """
+    try:
+        # Check cache first
+        if conference_name in _core_cache:
+            cached_result = _core_cache[conference_name]
+            if cached_result is None or (datetime.now() - cached_result.get('cached_at', datetime.now())) < timedelta(hours=24):
+                logger.debug(f"CORE cache hit for: {conference_name}")
+                return cached_result
+        
+        # Respect rate limits
+        _respect_core_rate_limit()
+        
+        # Build CORE API request
+        url = f"{CORE_API_URL}/search/works"
+        params = {
+            'q': f'venue:"{conference_name}"',
+            'limit': 1,
+            'offset': 0
+        }
+        
+        # Add API key if available
+        headers = {}
+        if CORE_API_KEY:
+            headers['Authorization'] = f'Bearer {CORE_API_KEY}'
+        
+        logger.debug(f"Querying CORE API for: {conference_name}")
+        
+        response = requests.get(url, params=params, headers=headers, timeout=5)
+        
+        if response.status_code == 200:
+            data = response.json()
+            
+            if data.get('data') and len(data['data']) > 0:
+                work = data['data'][0]
+                
+                result = {
+                    'display_name': work.get('title', conference_name),
+                    'rank': work.get('rank'),  # CORE provides rank if available
+                    'h_index': work.get('hIndex'),
+                    'citation_count': work.get('citationCount', 0),
+                    'paper_count': data.get('totalHits', 0),
+                    'source': 'core',
+                    'confidence': 0.9,
+                    'cached_at': datetime.now()
+                }
+                
+                # Cache the result
+                _core_cache[conference_name] = result
+                logger.info(f"CORE data found for {conference_name}")
+                return result
+            else:
+                # Not found in CORE
+                _core_cache[conference_name] = None
+                logger.debug(f"Conference not found in CORE: {conference_name}")
+                return None
+        
+        elif response.status_code == 429:
+            logger.warning(f"CORE API rate limit hit for {conference_name}")
+            return None
+        
+        else:
+            logger.debug(f"CORE API error {response.status_code} for {conference_name}")
+            return None
+            
+    except requests.Timeout:
+        logger.debug(f"CORE API timeout for {conference_name}")
+        return None
+    except Exception as e:
+        logger.debug(f"Error querying CORE for '{conference_name}': {e}")
+        return None
+
+
+def rank_conference(classification_data, papers_data=None) -> Optional[Dict]:
+    """
+    Rank conference as A, B, or C based on multiple criteria.
+    
+    Uses hybrid approach:
+    1. First tries CORE API (if available and has data)
+    2. Falls back to algorithmic ranking with known conferences
+    3. Always succeeds with graceful degradation
+    
+    Args:
+        classification_data: Output from classify_conference()
+        papers_data: List of enriched papers with author data
+    
+    Returns:
+        dict: {
+            'rank': 'A'|'B'|'C',
+            'score': 0-100,
+            'method': 'core'|'known_list'|'algorithmic',
+            'factors': [...],
+            'reasoning': str,
+            'source': 'core'|'local'
+        }
+    """
+    if not classification_data:
+        return {
+            'rank': 'C',
+            'score': 50,
+            'method': 'default',
+            'factors': ['insufficient_data'],
+            'reasoning': 'Insufficient data for ranking',
+            'source': 'local'
+        }
+    
+    primary_field = classification_data.get('primary', '')
+    
+    # Known top-tier conferences (community curated)
+    KNOWN_CONFERENCES = {
+        # Machine Learning
+        'NeurIPS': 'A', 'NIPS': 'A', 'ICML': 'A', 'ICLR': 'A',
+        'AAAI': 'B', 'IJCAI': 'B', 'KDD': 'B',
+        # Natural Language Processing
+        'ACL': 'A', 'EMNLP': 'A', 'NAACL': 'A',
+        # Computer Vision
+        'CVPR': 'A', 'ICCV': 'A', 'ECCV': 'A',
+        # Security & Privacy
+        'CCS': 'A', 'USENIX': 'A', 'IEEE S&P': 'A',
+        # Systems & Databases
+        'OSDI': 'A', 'SOSP': 'A', 'NSDI': 'B',
+        'SIGMOD': 'B', 'VLDB': 'B', 'PODS': 'B',
+        # Software Engineering
+        'ICSE': 'B', 'FSE': 'B', 'ASE': 'B',
+        # Theory
+        'STOC': 'A', 'FOCS': 'A', 'SODA': 'A',
+        # Robotics
+        'ICRA': 'B', 'IROS': 'B', 'RSS': 'B',
+    }
+    
+    # Step 1: Try CORE API
+    try:
+        core_data = query_core_conference(primary_field)
+        if core_data and core_data.get('rank'):
+            return {
+                'rank': core_data['rank'],
+                'score': 90,  # High confidence from CORE
+                'method': 'core_api',
+                'factors': ['core_official_ranking'],
+                'reasoning': f"Official CORE ranking: {core_data['rank']}",
+                'source': 'core',
+                'core_data': {
+                    'display_name': core_data.get('display_name'),
+                    'h_index': core_data.get('h_index'),
+                    'citation_count': core_data.get('citation_count'),
+                    'paper_count': core_data.get('paper_count')
+                }
+            }
+    except Exception as e:
+        logger.debug(f"CORE ranking failed, falling back to local: {e}")
+    
+    # Step 2: Check known conferences list
+    conf_acronym = primary_field.split()[0].upper()
+    if conf_acronym in KNOWN_CONFERENCES:
+        return {
+            'rank': KNOWN_CONFERENCES[conf_acronym],
+            'score': 85,
+            'method': 'known_list',
+            'factors': [f'known_conference_{conf_acronym}'],
+            'reasoning': f"Conference found in known top-tier list",
+            'source': 'local'
+        }
+    
+    # Step 3: Algorithmic ranking
+    score = 50
+    factors = []
+    
+    # Field prestige
+    top_tier_fields = ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'Security']
+    if primary_field in top_tier_fields:
+        score += 20
+        factors.append('top_tier_field')
+    elif primary_field in ['Robotics', 'Distributed Systems', 'Software Engineering', 'Theory']:
+        score += 10
+        factors.append('mid_tier_field')
+    else:
+        factors.append('specialized_field')
+    
+    # Classification confidence
+    confidence = classification_data.get('confidence', 0)
+    if confidence >= 0.85:
+        score += 10
+        factors.append('high_confidence_classification')
+    elif confidence >= 0.70:
+        score += 5
+        factors.append('moderate_confidence_classification')
+    
+    # Paper count
+    if papers_data:
+        paper_count = len(papers_data)
+        if paper_count >= 100:
+            score += 15
+            factors.append('large_conference')
+        elif paper_count >= 50:
+            score += 10
+            factors.append('medium_conference')
+        elif paper_count >= 20:
+            score += 5
+            factors.append('small_conference')
+    
+    # Author quality (h-index)
+    if papers_data:
+        h_indices = []
+        for paper in papers_data:
+            for author in paper.get('enriched_authors', []):
+                h_idx = author.get('h_index')
+                if h_idx is not None:
+                    h_indices.append(h_idx)
+        
+        if h_indices:
+            avg_h = sum(h_indices) / len(h_indices)
+            if avg_h >= 30:
+                score += 15
+                factors.append(f'high_h_index')
+            elif avg_h >= 15:
+                score += 10
+                factors.append(f'moderate_h_index')
+            elif avg_h >= 5:
+                score += 5
+                factors.append(f'low_h_index')
+    
+    # Interdisciplinary
+    secondary = classification_data.get('secondary', [])
+    if len(secondary) >= 2:
+        score += 5
+        factors.append('interdisciplinary')
+    
+    # Determine rank
+    score = min(100, score)
+    if score >= 85:
+        rank = 'A'
+    elif score >= 65:
+        rank = 'B'
+    else:
+        rank = 'C'
+    
+    return {
+        'rank': rank,
+        'score': score,
+        'method': 'algorithmic',
+        'factors': factors,
+        'reasoning': f"Algorithmic ranking ({score}/100) based on field, authors, and conference scale",
+        'source': 'local'
+    }
 
 
 def clear_cache():

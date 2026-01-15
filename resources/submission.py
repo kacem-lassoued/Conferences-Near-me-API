@@ -3,7 +3,7 @@ from flask_smorest import Blueprint
 from models import PendingSubmission
 from schemas import SubmissionSchema
 from db import db
-from services.scholar_service import get_author_h_index, classify_conference
+from services.scholar_service import get_author_h_index, classify_conference, rank_conference
 import logging
 from utils.errors import make_response, make_error_response, ExternalServiceError, ValidationError as UtilValidationError
 
@@ -154,6 +154,23 @@ class SubmissionList(MethodView):
                 logger.warning(f"Error classifying conference: {e}")
                 classification_error = str(e)
             
+            # Rank the conference (A-B-C) with CORE API + fallback
+            ranking_data = None
+            ranking_error = None
+            
+            try:
+                logger.info(f"Ranking conference: {conference_name}")
+                ranking_data = rank_conference(classification_data, enriched_papers)
+                if ranking_data:
+                    logger.info(f"✓ Conference ranked: {ranking_data['rank']} "
+                              f"(score: {ranking_data['score']}/100, method: {ranking_data.get('method', 'unknown')})")
+                else:
+                    logger.warning(f"Could not rank conference: {conference_name}")
+                    ranking_error = "Ranking not available"
+            except Exception as e:
+                logger.warning(f"Error ranking conference: {e}")
+                ranking_error = str(e)
+            
             # Prepare submission payload with enriched data
             submission_payload = {
                 'name': submission_data.get('name'),
@@ -170,6 +187,11 @@ class SubmissionList(MethodView):
                 'classification_status': {
                     'classified': classification_data is not None,
                     'error': classification_error
+                },
+                'ranking': ranking_data,
+                'ranking_status': {
+                    'ranked': ranking_data is not None,
+                    'error': ranking_error
                 }
             }
             
@@ -202,6 +224,14 @@ class SubmissionList(MethodView):
                         'secondary': classification_data.get('secondary') if classification_data else [],
                         'confidence': classification_data.get('confidence') if classification_data else None,
                         'error': classification_error
+                    },
+                    'ranking': {
+                        'rank': ranking_data.get('rank') if ranking_data else None,
+                        'score': ranking_data.get('score') if ranking_data else None,
+                        'method': ranking_data.get('method') if ranking_data else None,
+                        'source': ranking_data.get('source') if ranking_data else None,
+                        'reasoning': ranking_data.get('reasoning') if ranking_data else None,
+                        'error': ranking_error
                     }
                 },
                 message='Submission processed successfully',
