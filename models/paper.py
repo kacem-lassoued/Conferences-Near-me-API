@@ -8,7 +8,7 @@ class Paper(db.Model):
     __tablename__ = 'papers'
     
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(500), nullable=False)
+    title = db.Column(db.String(500), nullable=False, index=True)
     conference_id = db.Column(db.Integer, db.ForeignKey('conferences.id'), nullable=False)
     
     # Relationship to conference

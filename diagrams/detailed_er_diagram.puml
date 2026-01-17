@@ -1,0 +1,207 @@
+@startuml Conference Discovery Platform - Detailed ER Diagram
+
+' Define colors and styling
+skinparam backgroundColor #FEFEFE
+skinparam entity {
+    BackgroundColor #E8F4FD
+    BorderColor #1976D2
+    BorderThickness 2
+}
+skinparam relationship {
+    FontSize 10
+    FontColor #333333
+}
+
+' ==========================================
+' ENTITIES WITH DETAILED ATTRIBUTES
+' ==========================================
+
+entity "**conferences**" as conferences <<Table>> {
+    **id** : INTEGER <<PK, AUTO_INCREMENT>>
+    --
+    **name** : VARCHAR(200) <<NOT NULL, INDEX>>
+    **acronym** : VARCHAR(20) <<NULL, INDEX>>
+    **description** : TEXT <<NULL>>
+    **website** : VARCHAR(200) <<NULL>>
+    --
+    **start_date** : DATE <<NULL>>
+    **end_date** : DATE <<NULL>>
+    --
+    **country** : VARCHAR(100) <<NULL, INDEX>>
+    **city** : VARCHAR(100) <<NULL, INDEX>>
+    **latitude** : FLOAT <<NULL>>
+    **longitude** : FLOAT <<NULL>>
+    --
+    **status** : VARCHAR(50) <<NOT NULL, DEFAULT 'scheduled'>>
+    **source** : VARCHAR(50) <<NOT NULL, DEFAULT 'manual'>>
+    **created_at** : DATETIME <<NOT NULL, DEFAULT CURRENT_TIMESTAMP, INDEX>>
+    --
+    **organizers** : TEXT <<NULL>>
+    **location** : VARCHAR(500) <<NULL>>
+    **featured_papers** : JSON <<NULL>>
+    **featured_workshops** : TEXT <<NULL>>
+    **classification** : JSON <<NULL>>
+    --
+    <<Constraints>>
+    CHECK (status IN ('scheduled', 'cancelled', 'postponed'))
+    CHECK (end_date >= start_date OR end_date IS NULL)
+}
+
+entity "**conference_editions**" as editions <<Table>> {
+    **id** : INTEGER <<PK, AUTO_INCREMENT>>
+    --
+    **year** : INTEGER <<NOT NULL>>
+    **venue** : VARCHAR(200) <<NULL>>
+    **acceptance_rate** : FLOAT <<NULL>>
+    **conference_id** : INTEGER <<NOT NULL, FK>>
+    --
+    <<Constraints>>
+    FOREIGN KEY (conference_id) REFERENCES conferences(id)
+    UNIQUE (conference_id, year)
+}
+
+entity "**rankings**" as rankings <<Table>> {
+    **id** : INTEGER <<PK, AUTO_INCREMENT>>
+    --
+    **ranking_name** : VARCHAR(50) <<NOT NULL>>
+    **rank** : VARCHAR(20) <<NULL>>
+    **score** : FLOAT <<NULL>>
+    **year** : INTEGER <<NULL>>
+    **conference_id** : INTEGER <<NOT NULL, FK>>
+    --
+    <<Constraints>>
+    FOREIGN KEY (conference_id) REFERENCES conferences(id)
+    CHECK (ranking_name IN ('CORE', 'SCImago', 'CCF', 'Qualis'))
+}
+
+entity "**themes**" as themes <<Table>> {
+    **id** : INTEGER <<PK, AUTO_INCREMENT>>
+    --
+    **name** : VARCHAR(100) <<NOT NULL, UNIQUE>>
+    **parent_theme_id** : INTEGER <<NULL, FK>>
+    --
+    <<Constraints>>
+    FOREIGN KEY (parent_theme_id) REFERENCES themes(id)
+}
+
+entity "**papers**" as papers <<Table>> {
+    **id** : INTEGER <<PK, AUTO_INCREMENT>>
+    --
+    **title** : VARCHAR(500) <<NOT NULL, INDEX>>
+    **conference_id** : INTEGER <<NOT NULL, FK>>
+    --
+    <<Constraints>>
+    FOREIGN KEY (conference_id) REFERENCES conferences(id)
+}
+
+entity "**authors**" as authors <<Table>> {
+    **id** : INTEGER <<PK, AUTO_INCREMENT>>
+    --
+    **name** : VARCHAR(200) <<NOT NULL, INDEX>>
+    **h_index** : INTEGER <<NULL>>
+    **semantic_scholar_id** : VARCHAR(100) <<NULL, UNIQUE, INDEX>>
+    **affiliation** : VARCHAR(300) <<NULL>>
+    **last_updated** : DATETIME <<NOT NULL, DEFAULT CURRENT_TIMESTAMP>>
+    --
+    <<Constraints>>
+    CHECK (h_index >= 0 OR h_index IS NULL)
+}
+
+entity "**pending_submissions**" as submissions <<Table>> {
+    **id** : INTEGER <<PK, AUTO_INCREMENT>>
+    --
+    **type** : VARCHAR(50) <<NOT NULL>>
+    **payload** : JSON <<NOT NULL>>
+    **user_id** : INTEGER <<NULL>>
+    **status** : VARCHAR(20) <<NOT NULL, DEFAULT 'pending'>>
+    **submitted_at** : DATETIME <<NOT NULL, DEFAULT CURRENT_TIMESTAMP>>
+    --
+    <<Constraints>>
+    CHECK (type IN ('new_conference', 'cancellation', 'modification'))
+    CHECK (status IN ('pending', 'approved', 'rejected'))
+}
+
+' ==========================================
+' ASSOCIATION TABLES (Many-to-Many Junctions)
+' ==========================================
+
+entity "**conference_themes**" as conf_themes <<Junction Table>> {
+    **conference_id** : INTEGER <<PK, FK>>
+    **theme_id** : INTEGER <<PK, FK>>
+    --
+    <<Constraints>>
+    FOREIGN KEY (conference_id) REFERENCES conferences(id)
+    FOREIGN KEY (theme_id) REFERENCES themes(id)
+    PRIMARY KEY (conference_id, theme_id)
+}
+
+entity "**paper_authors**" as paper_authors <<Junction Table>> {
+    **paper_id** : INTEGER <<PK, FK>>
+    **author_id** : INTEGER <<PK, FK>>
+    --
+    <<Constraints>>
+    FOREIGN KEY (paper_id) REFERENCES papers(id)
+    FOREIGN KEY (author_id) REFERENCES authors(id)
+    PRIMARY KEY (paper_id, author_id)
+}
+
+' ==========================================
+' RELATIONSHIPS WITH CARDINALITIES
+' ==========================================
+
+' One-to-Many Relationships
+conferences ||--o{ editions : "1..*"
+conferences ||--o{ rankings : "1..*"
+conferences ||--o{ papers : "1..*"
+
+' Self-referential relationship for theme hierarchy
+themes ||--o{ themes : "0..* (parent)"
+
+' Many-to-Many Relationships (through junction tables)
+conferences }o--o{ themes : "0..*" .. "0..*"
+papers }o--o{ authors : "1..*" .. "0..*"
+
+' Junction table connections
+conf_themes }o--|| conferences
+conf_themes }o--|| themes
+paper_authors }o--|| papers
+paper_authors }o--|| authors
+
+' ==========================================
+' LEGEND AND NOTES
+' ==========================================
+
+legend right
+    |= Symbol |= Meaning |
+    | **bold** | Primary Key |
+    | *italic* | Foreign Key |
+    | <<text>> | Constraints/Notes |
+    | PK | Primary Key |
+    | FK | Foreign Key |
+    | NOT NULL | Required Field |
+    | NULL | Optional Field |
+    | UNIQUE | Unique Constraint |
+    | INDEX | Database Index |
+    | AUTO_INCREMENT | Auto-generated ID |
+    | DEFAULT value | Default Value |
+    | CHECK (condition) | Check Constraint |
+endlegend
+
+note as N1
+    **Database Design Notes:**
+    - PostgreSQL with UTF-8 encoding
+    - JSON columns for flexible metadata
+    - Full-text search on conference names
+    - Geospatial indexes on coordinates
+    - Cascade delete for dependent records
+end note
+
+note as N2
+    **Business Rules Enforced:**
+    - Conference end_date >= start_date
+    - Unique conference-year combinations
+    - Valid status enumerations
+    - H-index >= 0 when present
+end note
+
+@enduml

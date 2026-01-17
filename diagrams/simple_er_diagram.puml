@@ -1,0 +1,119 @@
+@startuml Conference Discovery Platform - Simplified ER Diagram
+
+' Simplified ER diagram for better readability
+skinparam backgroundColor #FEFEFE
+skinparam entity {
+    BackgroundColor #E8F4FD
+    BorderColor #1976D2
+}
+
+entity "**conferences**" as conferences {
+    * id : INTEGER <<PK>>
+    --
+    name : VARCHAR(200) <<NN, IDX>>
+    acronym : VARCHAR(20) <<IDX>>
+    description : TEXT
+    website : VARCHAR(200)
+    start_date : DATE
+    end_date : DATE
+    country : VARCHAR(100) <<IDX>>
+    city : VARCHAR(100) <<IDX>>
+    latitude : FLOAT
+    longitude : FLOAT
+    status : VARCHAR(50)
+    created_at : DATETIME <<IDX>>
+    organizers : TEXT
+    location : VARCHAR(500)
+    featured_papers : JSON
+    classification : JSON
+}
+
+entity "**conference_editions**" as editions {
+    * id : INTEGER <<PK>>
+    --
+    * year : INTEGER <<NN>>
+    venue : VARCHAR(200)
+    acceptance_rate : FLOAT
+    * conference_id : INTEGER <<FK>>
+}
+
+entity "**rankings**" as rankings {
+    * id : INTEGER <<PK>>
+    --
+    ranking_name : VARCHAR(50) <<NN>>
+    rank : VARCHAR(20)
+    score : FLOAT
+    year : INTEGER
+    * conference_id : INTEGER <<FK>>
+}
+
+entity "**themes**" as themes {
+    * id : INTEGER <<PK>>
+    --
+    name : VARCHAR(100) <<NN, UQ>>
+    parent_theme_id : INTEGER <<FK>>
+}
+
+entity "**papers**" as papers {
+    * id : INTEGER <<PK>>
+    --
+    title : VARCHAR(500) <<NN, IDX>>
+    * conference_id : INTEGER <<FK>>
+}
+
+entity "**authors**" as authors {
+    * id : INTEGER <<PK>>
+    --
+    name : VARCHAR(200) <<NN, IDX>>
+    h_index : INTEGER
+    semantic_scholar_id : VARCHAR(100) <<UQ, IDX>>
+    affiliation : VARCHAR(300)
+    last_updated : DATETIME
+}
+
+entity "**pending_submissions**" as submissions {
+    * id : INTEGER <<PK>>
+    --
+    type : VARCHAR(50) <<NN>>
+    payload : JSON <<NN>>
+    user_id : INTEGER
+    status : VARCHAR(20) <<NN>>
+    submitted_at : DATETIME
+}
+
+' Junction tables
+entity "**conference_themes**" as conf_themes {
+    * conference_id : INTEGER <<PK, FK>>
+    * theme_id : INTEGER <<PK, FK>>
+}
+
+entity "**paper_authors**" as paper_authors {
+    * paper_id : INTEGER <<PK, FK>>
+    * author_id : INTEGER <<PK, FK>>
+}
+
+' Relationships
+conferences ||--o{ editions : "1"
+conferences ||--o{ rankings : "1"
+conferences ||--o{ papers : "1"
+themes ||--o{ themes : "parent\n0..1"
+conferences }o--o{ themes : "M"
+papers }o--o{ authors : "M"
+
+' Junction connections
+conf_themes }o--|| conferences
+conf_themes }o--|| themes
+paper_authors }o--|| papers
+paper_authors }o--|| authors
+
+legend right
+    |= Abbreviation |= Meaning |
+    | PK | Primary Key |
+    | FK | Foreign Key |
+    | NN | Not Null |
+    | IDX | Indexed |
+    | UQ | Unique |
+    | M | Many |
+endlegend
+
+@enduml

@@ -3,6 +3,7 @@ from flask_smorest import Blueprint
 from flask import request, jsonify
 from flask_jwt_extended import create_access_token
 from werkzeug.security import check_password_hash
+from datetime import timedelta
 import os
 from schemas import AuthSchema
 
@@ -27,7 +28,8 @@ class Login(MethodView):
         if email == ADMIN_EMAIL and check_password_hash(ADMIN_PASSWORD_HASH, password):
             access_token = create_access_token(
                 identity="admin",
-                additional_claims={"role": "admin"}
+                additional_claims={"role": "admin"},
+                expires_delta=timedelta(minutes=30)
             )
             return {"access_token": access_token}
         

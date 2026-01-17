@@ -38,8 +38,6 @@ if not jwt_secret:
     jwt_secret = "dev-secret-key-change-in-production"
 app.config["JWT_SECRET_KEY"] = jwt_secret
 
-print(f"DEBUG: SQLALCHEMY_DATABASE_URI = {app.config['SQLALCHEMY_DATABASE_URI']}")
-
 db.init_app(app)
 jwt = JWTManager(app)
 

@@ -19,22 +19,22 @@ class Conference(db.Model):
     __tablename__ = 'conferences'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(200), nullable=False)
-    acronym = db.Column(db.String(20), nullable=True)
+    name = db.Column(db.String(200), nullable=False, index=True)
+    acronym = db.Column(db.String(20), nullable=True, index=True)
     description = db.Column(db.Text, nullable=True)
     website = db.Column(db.String(200), nullable=True)
     
     start_date = db.Column(db.Date, nullable=True)
     end_date = db.Column(db.Date, nullable=True)
     
-    country = db.Column(db.String(100), nullable=True)
-    city = db.Column(db.String(100), nullable=True)
+    country = db.Column(db.String(100), nullable=True, index=True)
+    city = db.Column(db.String(100), nullable=True, index=True)
     latitude = db.Column(db.Float, nullable=True)
     longitude = db.Column(db.Float, nullable=True)
     
     status = db.Column(db.String(50), default='scheduled') # scheduled, cancelled, postponed
     source = db.Column(db.String(50), default='manual')
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    created_at = db.Column(db.DateTime, server_default=db.func.now(), index=True)
     
     # Submission fields
     organizers = db.Column(db.Text, nullable=True)

@@ -28,12 +28,13 @@ CORE_API_KEY = os.environ.get("CORE_API_KEY", None)  # Optional - used if availa
 CORE_RATE_LIMIT_DELAY = 0.5  # 500ms delay between requests (respects ~2 req/sec limit)
 
 # Cache to avoid redundant API calls (in-memory, simple implementation)
-_author_cache = {}
-_conference_cache = {}
-_core_cache = {}
+CACHE = {
+    'authors': {},
+    'conferences': {},
+    'core': {},
+    'papers': {}
+}
 _last_core_request_time = 0
-_conference_cache = {}
-_papers_cache = {}
 
 # Rate limiting
 MAX_RETRIES = 3
@@ -75,8 +76,8 @@ def search_author(author_name: str) -> Optional[Dict]:
         }
     """
     # Check cache first
-    if author_name in _author_cache:
-        cached_result = _author_cache[author_name]
+    if author_name in CACHE['authors']:
+        cached_result = CACHE['authors'][author_name]
         if cached_result:
             logger.debug(f"Cache hit for author: {author_name}")
         return cached_result
@@ -127,12 +128,12 @@ def search_author(author_name: str) -> Optional[Dict]:
                         }
                         
                         # Cache the result
-                        _author_cache[author_name] = result
+                        CACHE['authors'][author_name] = result
                         logger.info(f"Found author: {best_match.get('name')} (similarity: {scored_candidates[0]['similarity']:.2%})")
                         return result
                     else:
                         # No results found
-                        _author_cache[author_name] = None
+                        CACHE['authors'][author_name] = None
                         logger.warning(f"No author found for: {author_name}")
                         return None
                 
@@ -263,9 +264,9 @@ def search_papers_by_conference(conference_name: str, limit: int = 5) -> List[Di
     """
     # Check cache first
     cache_key = f"{conference_name}:{limit}"
-    if cache_key in _papers_cache:
+    if cache_key in CACHE['papers']:
         logger.debug(f"Cache hit for conference papers: {conference_name}")
-        return _papers_cache[cache_key]
+        return CACHE['papers'][cache_key]
     
     try:
         url = f"{BASE_URL}/paper/search"
@@ -304,7 +305,7 @@ def search_papers_by_conference(conference_name: str, limit: int = 5) -> List[Di
                         processed_papers.append(processed_paper)
                     
                     # Cache the result
-                    _papers_cache[cache_key] = processed_papers
+                    CACHE['papers'][cache_key] = processed_papers
                     logger.info(f"Found {len(processed_papers)} papers for conference: {conference_name}")
                     return processed_papers
                 
@@ -349,9 +350,9 @@ def search_conference_info(conference_name: str) -> Optional[Dict]:
         Dictionary with conference info including top papers
     """
     # Check cache first
-    if conference_name in _conference_cache:
+    if conference_name in CACHE['conferences']:
         logger.debug(f"Cache hit for conference info: {conference_name}")
-        return _conference_cache[conference_name]
+        return CACHE['conferences'][conference_name]
     
     try:
         papers = search_papers_by_conference(conference_name, limit=10)
@@ -383,7 +384,7 @@ def search_conference_info(conference_name: str) -> Optional[Dict]:
         }
         
         # Cache the result
-        _conference_cache[conference_name] = conference_info
+        CACHE['conferences'][conference_name] = conference_info
         logger.info(f"Conference info aggregated: {conference_name}")
         return conference_info
         
@@ -545,8 +546,8 @@ def query_core_conference(conference_name: str) -> Optional[Dict]:
     """
     try:
         # Check cache first
-        if conference_name in _core_cache:
-            cached_result = _core_cache[conference_name]
+        if conference_name in CACHE['core']:
+            cached_result = CACHE['core'][conference_name]
             if cached_result is None or (datetime.now() - cached_result.get('cached_at', datetime.now())) < timedelta(hours=24):
                 logger.debug(f"CORE cache hit for: {conference_name}")
                 return cached_result
@@ -589,12 +590,12 @@ def query_core_conference(conference_name: str) -> Optional[Dict]:
                 }
                 
                 # Cache the result
-                _core_cache[conference_name] = result
+                CACHE['core'][conference_name] = result
                 logger.info(f"CORE data found for {conference_name}")
                 return result
             else:
                 # Not found in CORE
-                _core_cache[conference_name] = None
+                CACHE['core'][conference_name] = None
                 logger.debug(f"Conference not found in CORE: {conference_name}")
                 return None
         
@@ -704,44 +705,11 @@ def rank_conference(classification_data, papers_data=None) -> Optional[Dict]:
             'source': 'local'
         }
     
-    # Step 3: Algorithmic ranking
+    # Step 3: Fair algorithmic ranking (no field bias)
     score = 50
     factors = []
     
-    # Field prestige
-    top_tier_fields = ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'Security']
-    if primary_field in top_tier_fields:
-        score += 20
-        factors.append('top_tier_field')
-    elif primary_field in ['Robotics', 'Distributed Systems', 'Software Engineering', 'Theory']:
-        score += 10
-        factors.append('mid_tier_field')
-    else:
-        factors.append('specialized_field')
-    
-    # Classification confidence
-    confidence = classification_data.get('confidence', 0)
-    if confidence >= 0.85:
-        score += 10
-        factors.append('high_confidence_classification')
-    elif confidence >= 0.70:
-        score += 5
-        factors.append('moderate_confidence_classification')
-    
-    # Paper count
-    if papers_data:
-        paper_count = len(papers_data)
-        if paper_count >= 100:
-            score += 15
-            factors.append('large_conference')
-        elif paper_count >= 50:
-            score += 10
-            factors.append('medium_conference')
-        elif paper_count >= 20:
-            score += 5
-            factors.append('small_conference')
-    
-    # Author quality (h-index)
+    # Author quality (primary factor - 40% weight)
     if papers_data:
         h_indices = []
         for paper in papers_data:
@@ -753,19 +721,40 @@ def rank_conference(classification_data, papers_data=None) -> Optional[Dict]:
         if h_indices:
             avg_h = sum(h_indices) / len(h_indices)
             if avg_h >= 30:
-                score += 15
-                factors.append(f'high_h_index')
+                score += 20
+                factors.append('high_author_quality')
             elif avg_h >= 15:
-                score += 10
-                factors.append(f'moderate_h_index')
+                score += 15
+                factors.append('moderate_author_quality')
             elif avg_h >= 5:
-                score += 5
-                factors.append(f'low_h_index')
+                score += 10
+                factors.append('low_author_quality')
     
-    # Interdisciplinary
+    # Classification confidence (30% weight)
+    confidence = classification_data.get('confidence', 0)
+    score += int(confidence * 15)  # 0-15 points
+    if confidence >= 0.85:
+        factors.append('high_confidence_classification')
+    elif confidence >= 0.70:
+        factors.append('moderate_confidence_classification')
+    
+    # Conference scale (20% weight)
+    if papers_data:
+        paper_count = len(papers_data)
+        if paper_count >= 100:
+            score += 10
+            factors.append('large_conference')
+        elif paper_count >= 50:
+            score += 7
+            factors.append('medium_conference')
+        elif paper_count >= 20:
+            score += 5
+            factors.append('small_conference')
+    
+    # Interdisciplinary bonus (10% weight)
     secondary = classification_data.get('secondary', [])
+    score += min(5, len(secondary))
     if len(secondary) >= 2:
-        score += 5
         factors.append('interdisciplinary')
     
     # Determine rank
@@ -792,8 +781,11 @@ def clear_cache():
     Clear all caches. Useful for testing or periodic refresh.
     Clears author cache, papers cache, and conference info cache.
     """
-    global _author_cache, _papers_cache, _conference_cache
-    _author_cache = {}
-    _papers_cache = {}
-    _conference_cache = {}
+    global CACHE
+    CACHE = {
+        'authors': {},
+        'conferences': {},
+        'core': {},
+        'papers': {}
+    }
     logger.info("All caches cleared")
